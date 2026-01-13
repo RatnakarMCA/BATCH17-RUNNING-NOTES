@@ -34,11 +34,107 @@ grep 'word' filename
 To search recursively in all files: grep -r 'word' /path/to/directory
 
 #### 7. How do you troubleshoot if an application is running slow on Linux?
-Check CPU/memory usage: top, htop, vmstat
-Check disk I/O: iostat, iotop, df -h
-Check network issues: netstat, ping, traceroute
-Check logs: /var/log/syslog, application-specific logs
-Check processes: ps aux --sort=-%mem
+
+
+TROUBLESHOOTING A SLOW APPLICATION ON LINUX
+(INTERVIEW-READY ANSWER)
+
+    I troubleshoot a slow application on Linux by
+    systematically checking system resources first,
+    then application behavior, and finally OS or
+    dependency limits.
+
+
+    CPU & LOAD
+
+        - Check CPU usage and system load
+        - Commands:
+            top
+            htop
+            uptime
+        - Look for:
+            • High CPU usage
+            • Load average higher than number of CPU cores
+
+
+    MEMORY
+
+        - Check RAM and swap usage
+        - Commands:
+            free -m
+            vmstat 1
+        - Look for:
+            • Low available memory
+            • Heavy swap usage
+
+
+    DISK & I/O
+
+        - Check disk space and I/O performance
+        - Commands:
+            df -h
+            iostat -x
+        - Look for:
+            • Full disks
+            • High I/O wait time
+
+
+    PROCESSES
+
+        - Identify resource-heavy processes
+        - Command:
+            ps -eo pid,cmd,%cpu,%mem --sort=-%cpu
+        - Look for:
+            • Processes consuming high CPU or memory
+
+
+    NETWORK
+
+        - Check network connectivity and latency
+        - Commands:
+            ss
+            netstat
+            ping
+            traceroute
+        - Look for:
+            • High latency
+            • Packet drops
+            • Connectivity issues
+
+
+    APPLICATION LOGS
+
+        - Review application and service logs
+        - Look for:
+            • Errors
+            • Slow queries
+            • Timeouts
+            • Repeated warnings
+
+
+    OS LIMITS
+
+        - Check system limits
+        - Command:
+            ulimit -a
+        - Look for:
+            • File descriptor limits
+            • Process limits
+
+
+    RECENT CHANGES
+
+        - Review recent system or app changes
+        - Check:
+            • New deployments
+            • Configuration changes
+            • Cron jobs
+            • OS patches or updates
+
+    in simple words , I isolate performance issues by correlating CPU,
+    memory, disk, and network metrics with application
+    logs to quickly identify the bottleneck.
+
 
 
 
