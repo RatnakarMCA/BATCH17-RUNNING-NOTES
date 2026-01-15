@@ -976,5 +976,223 @@ fi
         &   → Run command in background
         ;   → Run commands one after another
 
+================================================================================
+
+ADDITIONAL NOTES:
+
+WHAT IS STICKY BIT IN LINUX?? WHEN TO USE ?
+
+    STICKY BIT IN LINUX
+
+        Sticky bit is a special permission in Linux
+        used on directories.
+
+        It ensures that only:
+            - The file owner
+            - The directory owner
+            - Root user
+        can delete or rename files inside that directory.
+
+        Even if other users have write permission,
+        they cannot delete files owned by others.
+
+
+    --------------------------------------------------
+    WHY STICKY BIT IS NEEDED
+    --------------------------------------------------
+
+        Without sticky bit:
+            - Any user with write permission on a directory
+              can delete other users' files.
+
+        With sticky bit:
+            - Users can create files
+            - But cannot delete files created by others
+
+
+    --------------------------------------------------
+    REAL-WORLD EXAMPLE (/tmp DIRECTORY)
+    --------------------------------------------------
+
+        /tmp directory permissions:
+
+            drwxrwxrwt 10 root root /tmp
+
+        Explanation:
+            d    → directory
+            rwx  → owner permissions
+            rwx  → group permissions
+            rwt  → others permissions
+                   (t indicates sticky bit)
+
+
+    --------------------------------------------------
+    PRACTICAL EXAMPLE
+    --------------------------------------------------
+
+        Create a shared directory:
+
+            mkdir /shared
+            chmod 777 /shared
+
+        Set sticky bit:
+
+            chmod +t /shared
+
+        Check permissions:
+
+            ls -ld /shared
+
+        Output:
+
+            drwxrwxrwt /shared
+
+        Behavior:
+            - All users can create files
+            - Users cannot delete files created by others
+
+
+    --------------------------------------------------
+    HOW TO SET STICKY BIT
+    --------------------------------------------------
+
+        Using symbolic method:
+
+            chmod +t directory_name
+
+        Using numeric method:
+
+            chmod 1777 directory_name
+
+        Note:
+            1 → sticky bit
+            7 → rwx permissions
+
+
+    --------------------------------------------------
+    INTERVIEW ONE-LINER
+    --------------------------------------------------
+
+        Sticky bit is a special directory permission
+        that allows users to create files but prevents
+        them from deleting or modifying files owned
+        by other users, commonly used on /tmp.
+
+
+WHAT ARE REGULAR EXPRESSIONS AND HOW IT IS USED ?
+
+
+    REGULAR EXPRESSIONS (REGEX)
+
+        Regular expressions (regex) are patterns used
+        to search, match, and manipulate text.
+
+        They are commonly used in:
+            - Linux commands (grep, sed, awk)
+            - Programming languages
+            - Log analysis
+            - Input validation
+
+
+    --------------------------------------------------
+    SIMPLE MEANING
+    --------------------------------------------------
+
+        Regex is a way to describe:
+            "What kind of text I am looking for"
+
+        Instead of matching exact words,
+        regex matches patterns.
+
+
+    --------------------------------------------------
+    BASIC REGEX EXAMPLES
+    --------------------------------------------------
+
+        Match a word:
+
+            linux
+
+        - Matches the word "linux" anywhere in text
+
+
+        Match digits:
+
+            [0-9]
+
+        - Matches any single digit (0 to 9)
+
+
+        Match lowercase letters:
+
+            [a-z]
+
+        - Matches any lowercase letter
+
+
+        Match uppercase letters:
+
+            [A-Z]
+
+        - Matches any uppercase letter
+
+
+    --------------------------------------------------
+    COMMON REGEX SYMBOLS (VERY IMPORTANT)
+    --------------------------------------------------
+
+        .   → Matches any single character
+        *   → Matches zero or more occurrences
+        +   → Matches one or more occurrences
+        ?   → Matches zero or one occurrence
+        ^   → Start of line
+        $   → End of line
+
+
+    --------------------------------------------------
+    PRACTICAL EXAMPLES WITH GREP
+    --------------------------------------------------
+
+        Find lines containing "error":
+
+            grep "error" logfile.txt
+
+
+        Find lines starting with "root":
+
+            grep "^root" /etc/passwd
+
+
+        Find lines ending with ".log":
+
+            grep "\.log$" file.txt
+
+
+        Find lines containing numbers:
+
+            grep "[0-9]" file.txt
+
+
+    --------------------------------------------------
+    REAL-WORLD USE CASES
+    --------------------------------------------------
+
+        - Search errors in logs
+        - Validate email or phone number format
+        - Extract IP addresses
+        - Filter configuration files
+        - Find specific patterns in large files
+
+
+    --------------------------------------------------
+    INTERVIEW ONE-LINER
+    --------------------------------------------------
+
+        Regular expressions are patterns used to
+        search and match text, commonly used with
+        tools like grep, sed, and awk for text
+        processing and log analysis.
+
+
 
 
