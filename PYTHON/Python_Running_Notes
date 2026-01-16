@@ -1,0 +1,325 @@
+DATE: 16 JAN 26
+
+
+IF SHELL SCRIPTING IS ALREADY THERE, WHY PYTHON?
+
+    --------------------------------------------------
+    SHELL SCRIPTING (WHAT IT IS)
+    --------------------------------------------------
+
+        - A command-line interpreter and scripting language for Unix/Linux systems.
+        - Mainly used to automate Linux commands and OS-level tasks.
+        - Ideal for:
+              • File operations
+              • System administration
+              • Package installation
+              • Cron jobs
+              • Service management
+        - Not designed for complex programming.
+        - Works best only on Unix-like systems (Linux, macOS).
+        - Windows uses PowerShell instead, not Bash.
+
+
+    --------------------------------------------------
+    WHY PYTHON IS NEEDED (EVEN IF SHELL EXISTS)
+    --------------------------------------------------
+
+        - Python is a full programming language.
+        - Handles complex automation that shell cannot.
+        - Required for modern DevOps automation:
+              • AWS / Azure / GCP automation
+              • CI/CD integrations
+              • API-based automation
+              • CloudOps scripting
+        - Cross-platform (Linux, Windows, macOS)
+        - Easy to learn, clean syntax, very powerful.
+        - Faster automation with fewer lines of code.
+
+        Summary:
+            Shell → OS-level automation
+            Python → High-level automation + APIs + DevOps tools
+
+
+    --------------------------------------------------
+    PYTHON (WHAT IT IS)
+    --------------------------------------------------
+
+        - A high-level, general-purpose programming language.
+        - Clean and readable syntax.
+        - Supports multiple paradigms:
+              • Object-Oriented
+              • Functional
+              • Procedural
+        - Used for:
+              • Web development
+              • Data analysis
+              • Machine learning
+              • DevOps automation
+              • Scientific computing
+
+        DevOps scope:
+            Python scripting + API automation only.
+
+        OOP Concepts supported:
+            - Classes
+            - Objects
+            - Inheritance
+            - Encapsulation
+            - Polymorphism
+            - Abstraction
+
+
+    --------------------------------------------------
+    WHAT IS A PROGRAM?
+    --------------------------------------------------
+
+        - A collection of instructions written in code.
+        - Passed to CPU → Processor executes instructions.
+        - Programs manipulate data.
+        - Data is stored using variables.
+
+
+    --------------------------------------------------
+    WHAT IS A VARIABLE?
+    --------------------------------------------------
+
+        - A container used to store data.
+        - Example:
+
+              x = "madhu"
+              x = 10
+              x = 10.3
+              x = 3+4j
+
+
+    --------------------------------------------------
+    WHAT IS A DATA TYPE?
+    --------------------------------------------------
+
+        - Defines what type of value a variable stores.
+
+        Common types:
+            Text      → str
+            Numeric   → int, float, complex
+            Boolean   → bool (True/False)
+
+        Collection types (can store multiple values):
+            list, tuple, set, dictionary
+
+
+        Example:
+            X = [10, 9.8, "KIRAN", True]
+
+
+    --------------------------------------------------
+    READING INPUT & PRINTING OUTPUT
+    --------------------------------------------------
+
+        In Linux (shell):
+
+            echo "Enter your name"
+            read name
+            echo "Value of name is $name"
+
+        In Python:
+
+            name = input("Enter your name: ")
+            print("Hello,", name)
+
+        Shell script example:
+
+            #!/bin/bash
+            read -p "Enter your name: " name
+            echo "Hello, $name"
+
+
+    --------------------------------------------------
+    OPERATORS
+    --------------------------------------------------
+
+        Arithmetic:
+            +  -  *  /  %
+
+        Assignment:
+            =  +=  -=  *=
+
+        Comparison:
+            <  >  <=  >=  ==  !=
+            Shell equivalents: -eq -lt -le -gt -ge
+
+        Logical:
+            and, or, not
+
+        Identity:
+            is, is not
+
+        Membership:
+            in, not in
+
+        Bitwise:
+            & | ^ ~
+
+
+    --------------------------------------------------
+    PYTHON EXAMPLE
+    --------------------------------------------------
+
+        num1 = float(input("Enter first number: "))
+        num2 = float(input("Enter second number: "))
+
+        sum = num1 + num2
+
+        print(f"The sum of {num1} and {num2} is: {sum}")
+
+
+    --------------------------------------------------
+    SHELL EXAMPLE
+    --------------------------------------------------
+
+        #!/bin/bash
+        read num1
+        read num2
+        sum=$((num1+num2))
+        echo "Sum: $sum"
+
+
+    --------------------------------------------------
+    ADVANCED DATA TYPES (COLLECTION TYPES)
+    --------------------------------------------------
+
+        List:
+            - Ordered
+            - Mutable
+            - Allows duplicates
+            list = [1, 2, 3, 1]
+
+        Tuple:
+            - Ordered
+            - Immutable
+            - Allows duplicates
+            tuple = (1, 2, 3, 1)
+
+        Set:
+            - Unordered
+            - No duplicates
+            - No index
+            set = {1, 2, 3}
+
+        Dictionary:
+            - Unordered
+            - Mutable
+            - Key-value pairs
+            dict = {"name": "Madhu", "age": 30}
+
+
+    --------------------------------------------------
+    REAL DEVOPS EXAMPLES
+    --------------------------------------------------
+
+
+
+Real-Time DevOps Examples 
+
+List:
+
+Server IPs: 
+       A list of IP addresses of servers in a Cluster, which may change as servers are added or removed.
+
+   - Server IPs: ['192.168.1.1', '192.168.1.2', '10.81.0.3'] 
+
+   
+==============================
+
+
+Tuple:
+
+Server Configuration: 
+          A tuple containing details of server configuration  (IP, OS, version). These values are fixed Once set, these details should not change.
+		  
+          Immutable System Settings: Information about the region, availability zone, and instance type, which remains constant for the duration of a deployment.
+		  
+   - Server Configuration: ('192.168.1.1', 'Ubuntu', '18.04') 
+   - Immutable System Settings: ('US-East', 'us-east-1a', 'm5.large')		  
+		  
+====================
+	  
+Set:
+
+    Active Services --- A set of active services running on a server, where uniqueness (no duplicates) is crucial.
+	
+    Unique Error Codes ---A set of unique error codes encountered during operations, useful for monitoring and alerting.
+
+	- Active Services: {'nginx', 'redis', 'mysql', 'jenkins'} 
+	- Unique Error Codes: {404, 500, 502}
+	
+=====================
+
+Dictionaries :	
+	
+    Environment Variables: Key-value pairs representing environment variables for an application, where keys are unique and values can vary.
+	
+    Configurations: Dictionary of configurations, such as timeout settings and retry limits, where keys represent the setting and values are the parameters
+
+    - Environment Variables: {'DB_HOST': 'mcdb.example.com', 
+	                           'DB_USER': 'admin'
+							   
+							   } 
+	
+    - Configurations: {
+	
+	                   'timeout': 30, 
+					   'retries': 3
+					   }
+	
+
+
+========================================================
+
+        LIST
+            Server IPs:
+                ["192.168.1.1", "192.168.1.2", "10.81.0.3"]
+
+        TUPLE
+            Immutable server config:
+                ("192.168.1.1", "Ubuntu", "18.04")
+
+        SET
+            Active services:
+                {"nginx", "redis", "mysql"}
+
+            Unique error codes:
+                {404, 500, 502}
+
+        DICTIONARY
+            Environment variables:
+                {"DB_HOST": "db.example.com", "DB_USER": "admin"}
+
+            Configurations:
+                {"timeout": 30, "retries": 3}
+
+
+==================================================
+
+    --------------------------------------------------
+    PRACTICAL EXAMPLES
+    --------------------------------------------------
+
+        Remove duplicates from list:
+
+            usernames = ["madhu", "kiran", "madhu"]
+            unique = list(set(usernames))
+
+        Contact book:
+
+            contact = {
+                "name": "Madhu",
+                "phone": "73966",
+                "email": "devops@gmail.com"
+            }
+
+            contact_book = [
+                {"name": "Madhu", "phone": "..."},
+                {"name": "xyz",   "phone": "..."}
+            ]
+
+===============================================================================
