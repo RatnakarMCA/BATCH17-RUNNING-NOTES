@@ -893,3 +893,93 @@ SIMPLE SUMMARY
     Purpose:
         Keep data safe outside container
 
+=================================
+
+
+
+
+DATE 7 MAY 2026
+=============================================== 
+Docker file : 
+ 
+how to build --? 
+docker build -t <devopshubg333/batch17d:tag> -f Dockerfile .
+
+ ---------------------------------------- 
+Dockerfile for httpd :
+
+manual :
+
+amazonlinux 
+yum install httpd -y 
+/usr/sbin/httpd 
+/var/www/html/index.html 
+=============================
+
+Dockerfile: 
+
+
+FROM amazonlinux:latest
+RUN yum install httpd -y 
+COPY index.html /var/www/html/index.html
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+EXPOSE 80
+
+=================
+ docker build -t testimg:v1 -f Dockerfile .
+
+ docker tag 2606648e5ff3 devopshubg333/batch17d:httpd
+
+
+
+----------------- 
+docker run -it -p 8090:80 --name cont1 iid  
+
+
+========================================================================= 
+Dockerizing sample python web-application : 
+====== 
+Code : /opt/app.py 
+
+import os
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def main():
+    return "Welcome to Batch17d!"
+
+@app.route("/how are you")
+def hello():
+    return "I am good, how about you?"
+
+if __name__ == "__main__":
+    app.run()
+
+
+============== 
+Commands : 
+
+
+yum update -y 
+yum install python3 python3-pip pip -y 
+pip install flask 
+FLASK_APP=/opt/python_app/app.py flask run --host=0.0.0.0 --port=8080 
+
+
+Dockerfile
+
+FROM amazonlinux
+RUN yum update -y 
+RUN yum install python3 python3-pip pip -y 
+RUN pip install flask 
+COPY app.py /opt/python_app/app.py
+CMD FLASK_APP=/opt/python_app/app.py flask run --host=0.0.0.0 --port=8080 
+EXPOSE 8080
+
+----------------- 
+docker build -t pythonimg:v1 -f Dockerfile .
+docker tag 94b3631fb8d0 devopshubg333/batch17d:pythonimg_v1
+
+
